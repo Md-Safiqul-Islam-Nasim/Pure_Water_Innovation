@@ -46,9 +46,8 @@
             }
         
             if ($user->role === 'user') {
-                return view('frontend.layouts.dashboard.user-dashboard'); // Or any appropriate view
+                return view('frontend.layouts.dashboard.dashboard'); // Or any appropriate view
             }
-        
             return redirect()->route('home'); // Handle unexpected roles
         })->name('dashboard');
         
@@ -68,14 +67,13 @@
 
         // Product Management   
         Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-        
         Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
         Route::post('/products', [ProductController::class, 'store'])->name('products.store');
         Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
         Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
         Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
         Route::post('/products/photo/update', [ProductController::class, 'UpdateProductPhoto'])->name('update.products.photo');
-        Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+        Route::get('/show/product/{id}', [ProductController::class, 'show'])->name('products.show');
 
 
 

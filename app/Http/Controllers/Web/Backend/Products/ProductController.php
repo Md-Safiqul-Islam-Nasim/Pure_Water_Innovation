@@ -24,11 +24,10 @@ class ProductController extends Controller
         return view('backend.layouts.products.index', compact('products'));;
     }
 
-    public function show(Product $product)
+    public function show($id)
     {
-        
-        dd($product);  // Add this line to check the data
-
+        $product = Product::findOrFail($id);
+        dd($product);
         return view('frontend.layouts.product.product-details', compact('product'));
     }
 

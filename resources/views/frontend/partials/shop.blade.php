@@ -144,7 +144,7 @@
                     </div>
                 </a>
                 <!-- card -->
-                <a href="{{route('product-details')}}">
+                <a href="{{ route('products.show',  ['product' => $product->id])}}">
                     <div class="bi-common-card">
                         <img src="frontend/images/shopItem2.png" alt="" srcset=""
                             class="bi-common-card-img" />

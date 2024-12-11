@@ -27,7 +27,7 @@
             </div>
             <div class="product--details--right">
                 <div class="product--details--right--header">
-                    <h2 class="ptoduct--details--right--header">{{$product->name}}</h2>
+                  <h2 class="product--details--right--header">{{$product->name}}</h2>
                 </div> 
 
                 <div class="product--details--right--review">
