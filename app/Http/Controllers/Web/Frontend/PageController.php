@@ -4,9 +4,28 @@ namespace App\Http\Controllers\Web\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
+
+    public function home()
+    {
+        $user = Auth::user();
+
+        $products = Product::all();
+        
+        if ($user->role === 'admin') {
+            return view('backend.layouts.dashboard.dashboard');
+        }
+    
+        if ($user->role === 'user') {
+            return view('frontend.layouts.dashboard.dashboard', compact('products')); // Or any appropriate view
+        }
+        return redirect()->route('home');
+    }
+
     public function about()
     {
         return view('frontend.layouts.about-us');

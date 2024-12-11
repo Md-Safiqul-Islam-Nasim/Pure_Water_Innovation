@@ -38,21 +38,7 @@
     Route::middleware(['auth'])->group(function () {
         // Dashboard Route (This will use the showDashboard method in the ProductController)
         
-        Route::get('/dashboard', function () {
-            $user = Auth::user();
-        
-            if ($user->role === 'admin') {
-                return view('backend.layouts.dashboard.dashboard');
-            }
-        
-            if ($user->role === 'user') {
-                return view('frontend.layouts.dashboard.dashboard'); // Or any appropriate view
-            }
-            return redirect()->route('home'); // Handle unexpected roles
-        })->name('dashboard');
-        
-        
-        
+        Route::get('/dashboard', [PageController::class, 'home'])->name('dashboard');
         
         // Profile
         Route::prefix('profile')->group(function () {
